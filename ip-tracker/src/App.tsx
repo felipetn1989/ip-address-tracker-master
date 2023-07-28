@@ -5,7 +5,7 @@ import { IResult } from "./interfaces/IResult";
 
 function App() {
   const [ip, setIp] = useState<string>();
-  const [ipResult, setIpResult] = useState<any>();
+  const [ipResult, setIpResult] = useState<IResult>();
 
   function ipToSearch(e: ChangeEvent<HTMLInputElement>): void {
     setIp(e.target.value);
@@ -13,6 +13,8 @@ function App() {
   }
 
   function findIp(e: FormEvent<HTMLFormElement>): void {
+    e.preventDefault();
+
     async function getData() {
       try {
         const resp = await fetch(
@@ -20,7 +22,7 @@ function App() {
         );
         const data = await resp.json();
         setIpResult(data);
-        console.log(data)
+        console.log(data);
       } catch (err) {
         console.log(err);
       }

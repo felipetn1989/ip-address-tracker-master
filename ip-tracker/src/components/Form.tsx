@@ -9,7 +9,12 @@ interface Props {
 
 const Form = ({ handleChange, handleSubmit }: Props) => {
   return (
-    <form onSubmit={handleSubmit} className="flex w-[88%] max-w-[30rem]" action="#" noValidate>
+    <form
+      onSubmit={handleSubmit}
+      className="flex w-[88%] max-w-[30rem]"
+      action="#"
+      noValidate
+    >
       <input
         className="h-14 w-[90%] pl-7 pr-[4.25rem] rounded-l-2xl"
         type="text"
