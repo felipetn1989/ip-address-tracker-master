@@ -22,7 +22,6 @@ function App() {
         );
         const data = await resp.json();
         setIpResult(data);
-        console.log(data);
       } catch (err) {
         console.log(err);
       }
