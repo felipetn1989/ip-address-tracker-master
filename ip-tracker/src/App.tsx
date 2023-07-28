@@ -2,10 +2,12 @@ import React, { ChangeEvent, FormEvent, useState } from "react";
 import Header from "./components/Header";
 import Main from "./pages/Main";
 import { IResult } from "./interfaces/IResult";
+import { LatLngExpression } from "leaflet";
 
 function App() {
   const [ip, setIp] = useState<string>();
   const [ipResult, setIpResult] = useState<IResult>();
+  const [mapCoords, setMapCoords] = useState<LatLngExpression>();
 
   function ipToSearch(e: ChangeEvent<HTMLInputElement>): void {
     setIp(e.target.value);
@@ -22,6 +24,8 @@ function App() {
         );
         const data = await resp.json();
         setIpResult(data);
+        setMapCoords([data.location.lat, data.location.lng]);
+        console.log([data.location.lat, data.location.lng]);
       } catch (err) {
         console.log(err);
       }
@@ -33,7 +37,7 @@ function App() {
   return (
     <div className="App">
       <Header handleChange={ipToSearch} handleSubmit={findIp} />
-      <Main ipData={ipResult!} />
+      <Main ipData={ipResult!} mapCoords={mapCoords!} />
     </div>
   );
 }
