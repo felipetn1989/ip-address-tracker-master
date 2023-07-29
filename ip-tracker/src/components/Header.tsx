@@ -19,7 +19,7 @@ const Header = ({ handleChange, handleSubmit, isIpValid }: Props) => {
       </h1>
       <Form handleChange={handleChange} handleSubmit={handleSubmit} />
       {!isIpValid && (
-        <p className="text-red-500 text-xs absolute top-[9rem]">
+        <p className="text-red-500 text-xs absolute top-[9rem] lg:top-[10rem]">
           Please insert a valid IP Address
         </p>
       )}
