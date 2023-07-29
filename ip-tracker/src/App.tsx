@@ -8,6 +8,7 @@ function App() {
   const [ip, setIp] = useState<string>();
   const [ipResult, setIpResult] = useState<IResult>();
   const [mapCoords, setMapCoords] = useState<LatLngExpression>();
+  const [isIpValid, setIsIpValid] = useState<boolean>(true);
 
   function ipToSearch(e: ChangeEvent<HTMLInputElement>): void {
     setIp(e.target.value);
@@ -15,7 +16,14 @@ function App() {
   }
 
   function findIp(e: FormEvent<HTMLFormElement>): void {
+    let regex: RegExp =
+      /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+
     e.preventDefault();
+
+    setIsIpValid(regex.test(ip!));
+
+    if (!regex.test(ip!)) return;
 
     async function getData() {
       try {
@@ -36,7 +44,11 @@ function App() {
 
   return (
     <div className="App">
-      <Header handleChange={ipToSearch} handleSubmit={findIp} />
+      <Header
+        handleChange={ipToSearch}
+        handleSubmit={findIp}
+        isIpValid={isIpValid}
+      />
       <Main ipData={ipResult!} mapCoords={mapCoords!} />
     </div>
   );

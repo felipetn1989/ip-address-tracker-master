@@ -1,16 +1,15 @@
 import React, { ChangeEvent, FormEvent } from "react";
 
-import mobileBg from "../images/mobileBg.png";
-
 import style from "./Header.module.css";
 import Form from "./Form";
 
 interface Props {
   handleChange(e: ChangeEvent<HTMLInputElement>): void;
   handleSubmit(e: FormEvent<HTMLFormElement>): void;
+  isIpValid: boolean;
 }
 
-const Header = ({ handleChange, handleSubmit }: Props) => {
+const Header = ({ handleChange, handleSubmit, isIpValid }: Props) => {
   return (
     <header
       className={`${style.header} h-[18.75rem] py-[1.31255rem] flex flex-col items-center gap-6 min-w-[15rem]`}
@@ -19,6 +18,11 @@ const Header = ({ handleChange, handleSubmit }: Props) => {
         IP Address Tracker
       </h1>
       <Form handleChange={handleChange} handleSubmit={handleSubmit} />
+      {!isIpValid && (
+        <p className="text-red-500 text-xs absolute top-[9rem]">
+          Please insert a valid IP Address
+        </p>
+      )}
     </header>
   );
 };
