@@ -43,7 +43,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="App max-w-[1440px] m-auto">
       <Header
         handleChange={ipToSearch}
         handleSubmit={findIp}

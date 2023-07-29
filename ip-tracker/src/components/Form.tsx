@@ -11,7 +11,7 @@ const Form = ({ handleChange, handleSubmit }: Props) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex w-[88%] max-w-[30rem]"
+      className="flex w-[88%] max-w-[30rem] lg:max-w-[34.5rem]"
       action="#"
       noValidate
     >
@@ -21,7 +21,7 @@ const Form = ({ handleChange, handleSubmit }: Props) => {
         placeholder="Insert IP Address"
         onChange={handleChange}
       />
-      <button className="bg-black h-14 w-[20%] flex justify-center items-center rounded-r-2xl">
+      <button className="bg-black h-14 w-[20%] flex justify-center items-center rounded-r-2xl lg:w-[10%]">
         <img src={iconArrow} alt="Arrow icon submit button" />
       </button>
     </form>
